@@ -1,42 +1,31 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
-
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-  <title>BIA Textiles - Signature Generator (Outlook-Safe + Responsive + V-cut Divider)</title>
+  <title>BIA Textiles - Signature Generator (New Design)</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <!-- Mobile styles -->
   <style type="text/css">
     /* Basic hygiene */
-    img { border:0; outline:none; text-decoration:none; display:block; -ms-interpolation-mode:bicubic; }
+    img { border:0; outline:none; text-decoration:none; display:block; }
     a   { text-decoration:none; color:#111111; }
     table { border-collapse:separate; } /* safer in email clients */
-    .text { font-family:Arial, Helvetica, sans-serif; mso-line-height-rule:exactly; color:#111111; }
 
-    /* Mobile (phones ≤480px): stack columns and hide the divider cell.
-       Add a CSS border-left on the details column so the red line is still visible on phones. */
+    /* Mobile (phones ≤480px): stack columns and hide the image divider. 
+       Show a CSS border-left on the details column so the red line is always visible. */
     @media only screen and (max-width:480px){
       .sig-table  { width:100% !important; }
       .stack      { display:block !important; width:100% !important; }
       .logo-cell  { padding:8px 8px 0 8px !important; }
       .divider-cell { display:none !important; }
-      .details-cell {
-        padding:8px 10px 0 10px !important;
-        border-left:4px solid #d40000 !important;
+      .details-cell { 
+        padding:8px 10px 0 10px !important; 
+        border-left:4px solid #d40000 !important; 
       }
     }
-
-    /* Prevent mobile clients from auto-scaling text */
-    body, table, td, a { -webkit-text-size-adjust:100%; -ms-text-size-adjust:100%; }
   </style>
-
-  <!--[if mso]>
-    <style type="text/css">
-      .text { font-family:Arial, Helvetica, sans-serif !important; }
-    </style>
-  <![endif]-->
 </head>
 
 <body bgcolor="#ffffff" style="background:#ffffff; font-family:Arial, Helvetica, sans-serif; margin:0; padding:20px;">
@@ -72,6 +61,7 @@
                   <input id="waSameCheckbox" type="checkbox" checked />
                   <label for="waSameCheckbox">WhatsApp is same as Phone</label>
                 </div>
+                <!-- If different, enter FULL WhatsApp number with country code -->
                 <input id="whatsappFullInput" type="text" placeholder="WhatsApp (enter FULL number incl. country code if different)"
                   style="width:100%; padding:8px; margin:6px 0; border:0; border-radius:4px; box-sizing:border-box;" />
 
@@ -101,160 +91,115 @@
 
         <!-- Signature (set to hug content) -->
         <table id="signaturewrap" class="sig-table" role="presentation" cellpadding="0" cellspacing="0" border="0"
-          style="width:auto; display:inline-table; background:#ffffff;
-                 /* preview border only (won’t be copied) */
-                 border:1px solid #d9d9d9; border-radius:10px;
+          style="width:auto; display:inline-table; background:#ffffff; 
+                 /* To remove ALL boxes, delete the next two properties: */
+                 border:1px solid #d9d9d9; border-radius:10px; 
                  overflow:hidden;">
           <tr>
-
-            <!-- Logo -->
-            <td class="logo-cell" style="width:120px; padding:4px 4px 0 8px; vertical-align:top; text-align:center; background:#ffffff;">
-              <img src="logo2.png"
-                   width="120"
-                   style="width:120px; height:auto; display:block; margin:0 auto; background:#ffffff;"
-                   alt="BIA Textiles" />
+            
+            <!-- Logo (tight padding; align top) -->
+            <td class="logo-cell" style="width: 120px; padding:4px 4px 0 8px; vertical-align:center; text-align:center; background:#ffffff;">
+              <img src="logo2.png" style="width:100%; max-width:250px; display:block; margin:0 auto; background:#ffffff;" alt="BIA Textiles" />
             </td>
 
-            <!-- Divider: V-CUT (hybrid: VML for old Outlook; CSS for modern; hidden on phones) -->
+            <!-- Divider (IMAGE on desktop; hidden on phones by media query) -->
             <td class="divider-cell" id="redLineCell"
-                width="12"
-                style="width:12px; padding:0; margin:0; vertical-align:top; background:#ffffff; line-height:0; font-size:0;">
-
-              <!--[if mso]>
-              <!-- Old Outlook: VML vertical pill with a triangular V-cut at the bottom -->
-              <v:group xmlns:v="urn:schemas-microsoft-com:vml" style="width:12px;height:260px;" coordorigin="0,0" coordsize="12,260">
-                <!-- Red body -->
-                <v:roundrect arcsize="50%" stroke="false" fillcolor="#d40000"
-                  style="position:absolute;left:0;top:0;width:12;height:260;"></v:roundrect>
-                <!-- V notch (white triangle) at bottom
-                     If you change total height or notch height, update 'top' below to: totalHeight - notchHeight -->
-                <v:shape stroke="false" fillcolor="#ffffff"
-                  style="position:absolute;left:0;top:232;width:12;height:28;"
-                  path="m 0,260 l 6,232 12,260 x e"></v:shape>
-              </v:group>
-              <![endif]-->
-
-              <!--[if !mso]><!-->
-              <!-- Modern clients: CSS block with bottom V notch -->
-              <div style="
-                width:12px;
-                height:260px;
-                background:#d40000;
-                border-radius:999px;
-                position:relative;
-                display:block;">
-                <!-- Bottom V-cut (white triangle) -->
-                <span style="
-                  position:absolute;
-                  left:0; right:0;
-                  bottom:-1px;               /* pull 1px to avoid a red rim */
-                  margin:0 auto;
-                  width:0; height:0;
-                  border-left:6px solid transparent;   /* half of 12px width */
-                  border-right:6px solid transparent;
-                  border-top:28px solid #ffffff;       /* notch height & color */
-                  display:block;"></span>
-              </div>
-              <!--<![endif]-->
-
+                style="width:8px; padding:0; margin:0; vertical-align:top; background:#ffffff; line-height:0; font-size:0;">
+              <!-- Use an absolute URL in production (example below). 
+                   src="https://raw.githubusercontent.com/Arfath02/Updated-signature/main/new%20red%20line.png" -->
+              <img id="dividerImg"
+                   src="new red line.png"
+                   width="20"
+                   style="display:block; border:0; outline:none; margin:0; height: auto; background:#ffffff;" 
+                   alt="" />
             </td>
 
-            <!-- Details -->
-            <td id="detailsCell" class="details-cell text" style="vertical-align:top; padding:0; background:#ffffff;">
+            <!-- Details column (white bg; media query adds border-left on phones) -->
+            <td id="detailsCell" class="details-cell" style="vertical-align:top; padding:0; background:#ffffff;">
               <table role="presentation" cellpadding="0" cellspacing="0" border="0" style="border-collapse:separate; background:#ffffff;">
                 <tr>
-                  <td class="text" style="padding:6px 10px 6px 10px; vertical-align:top; background:#ffffff;">
+                  <td style="padding:4px 10px 0 10px; vertical-align:top; background:#ffffff;">
 
                     <!-- Name -->
-                    <div class="text" style="font-size:18px; line-height:20px; font-weight:700; color:#000000; margin:0; display:block; background:#ffffff;">
-                      <span id="sigName" style="font-size:18px; line-height:20px; font-weight:700;">Alex John</span>
+                    <div style="font-size:18px; line-height:20px; font-weight:700; color:#000000; margin:0; display:block; background:#ffffff;">
+                      <span id="sigName">Alex John</span>
                     </div>
 
                     <!-- Designation -->
-                    <div class="text" style="font-size:13px; line-height:17px; color:#333333; font-weight:600; margin:2px 0 0 0; display:block; background:#ffffff;">
-                      <span id="sigDesignation" style="font-size:13px; line-height:17px; font-weight:600;">Designation</span>
+                    <div style="font-size:13px; line-height:17px; color:#333333; font-weight:600; margin:2px 0 0 0; display:block; background:#ffffff;">
+                      <span id="sigDesignation">Designation</span>
                     </div>
 
                     <!-- Contact list -->
-                    <table role="presentation" cellpadding="0" cellspacing="0" border="0"
-                           style="width:100%; border-collapse:collapse; margin-top:6px; background:#ffffff;">
+                    <table role="presentation" cellpadding="0" cellspacing="0" border="0" style="width:100%; border-collapse:collapse; margin-top:6px; background:#ffffff;">
                       <tr>
-                        <td class="text" style="vertical-align:top; padding:0; background:#ffffff;">
+                        <td style="vertical-align:top; padding:0; background:#ffffff;">
 
                           <!-- Phone -->
-                          <table role="presentation" cellpadding="0" cellspacing="0" border="0"
-                                 style="width:100%; padding:0; background:#ffffff;">
+                          <table role="presentation" cellpadding="0" cellspacing="0" border="0" style="width:100%; padding:0; background:#ffffff;">
                             <tr>
                               <td style="width:26px; vertical-align:middle; padding:0; background:#ffffff;">
-                                <img src="call.png" width="18" height="18" alt="Phone"
-                                     style="display:block; border:0; outline:none; background:#ffffff;" />
+                                <img src="call.png" width="18" height="18" alt="Phone" style="display:block; border:0; outline:none; background:#ffffff;" />
                               </td>
-                              <td class="text" style="vertical-align:middle; padding:0 0 4px 0; font-size:13px; line-height:17px; color:#111111; background:#ffffff;">
+                              <td style="vertical-align:middle; padding:0 0 4px 0; font-size:13px; line-height:17px; color:#111111; background:#ffffff;">
                                 <a id="sigPhoneLink" href="tel:+962776655443" style="color:#111111; text-decoration:none;">
-                                  <span id="sigPhone" style="font-size:13px; line-height:17px; word-spacing:2px; letter-spacing:0.2px;">+962 776655443</span>
+                                  <span id="sigPhone" style="word-spacing:2px; letter-spacing:0.2px;">+962 776655443</span>
                                 </a>
                               </td>
                             </tr>
                           </table>
 
                           <!-- WhatsApp -->
-                          <table role="presentation" cellpadding="0" cellspacing="0" border="0"
-                                 style="width:100%; padding:0; background:#ffffff;">
+                          <table role="presentation" cellpadding="0" cellspacing="0" border="0" style="width:100%; padding:0; background:#ffffff;">
                             <tr>
                               <td style="width:26px; vertical-align:middle; padding:0; background:#ffffff;">
-                                <img src="whatsapp.png" width="18" height="18" alt="WhatsApp"
-                                     style="display:block; border:0; outline:none; background:#ffffff;" />
+                                <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='18' height='18' viewBox='0 0 64 64' fill='none'><path fill='%23000000' d='M32 8c-11.9 0-21.6 9.4-21.6 21 0 4.7 1.6 9 4.4 12.6L12 56l14.8-4.5c1.7.5 3.5.7 5.3.7 11.9 0 21.6-9.4 21.6-21S43.9 8 32 8zm0 38.5c-1.7 0-3.4-.2-5-.7l-1-.3-8.8 2.7 2.6-8.3-.6-.8C17 36.3 15.8 33 15.8 29c0-8.9 7.3-16.2 16.2-16.2S48.2 20.1 48.2 29 40.9 46.5 32 46.5z'/><path fill='%23000000' d='M42.9 38.4c-.5 1.5-2.7 2.7-3.9 2.8-1 .1-2 .1-3.3-.2-.7-.2-1.7-.6-2.9-1.2-5.2-2.5-8.5-7.3-8.9-7.8-.3-.4-2.1-2.8-2.1-5.4s1.2-3.9 1.8-4.6c.5-.6 1.2-.7 1.6-.7h1c.3 0 .8-.1 1.3 1 0 0 1.2 3.4 1.5 4.2.1.3.1.7 0 1.1-.2.4-.3.7-.5 1-.2.3-.5.7-.8 1-.2.2-.5.5-.2 1 .3.6 1.5 2.4 3.3 3.9 2.2 1.9 4 2.6 4.6 2.9.5.2.9.2 1.3-.1.4-.3 1.6-1.2 2-1.7.5-.4.8-.3 1.4-.2.5.1 3.4 1.5 4 1.9.5.3.9.5 1 .9.2.3.2 1.5-.3 3z'/></svg>" 
+                                     width="18" height="18" alt="WhatsApp" style="display:block; margin:0; border:0; background:#ffffff;" />
                               </td>
-                              <td class="text" style="vertical-align:middle; padding:0 0 4px 0; font-size:13px; line-height:17px; color:#111111; background:#ffffff;">
+                              <td style="vertical-align:middle; padding:0 0 4px 0; font-size:13px; line-height:17px; color:#111111; background:#ffffff;">
                                 <a id="sigWhatsAppLink" href="https://wa.me/962776655443" style="color:#111111; text-decoration:none;">
-                                  <span id="sigWhatsAppText" style="font-size:13px; line-height:17px; word-spacing:2px; letter-spacing:0.2px;">WhatsApp: +962 776655443</span>
+                                  <span id="sigWhatsAppText" style="word-spacing:2px; letter-spacing:0.2px;">WhatsApp: +962 776655443</span>
                                 </a>
                               </td>
                             </tr>
                           </table>
 
                           <!-- Email -->
-                          <table role="presentation" cellpadding="0" cellspacing="0" border="0"
-                                 style="width:100%; background:#ffffff;">
+                          <table role="presentation" cellpadding="0" cellspacing="0" border="0" style="width:100%; background:#ffffff;">
                             <tr>
                               <td style="width:26px; vertical-align:middle; padding:0; background:#ffffff;">
-                                <img src="Mail.png" width="18" height="18" alt="Email"
-                                     style="display:block; border:0; outline:none; background:#ffffff;" />
+                                <img src="Mail.png" width="18" height="18" alt="Email" style="display:block; border:0; outline:none; background:#ffffff;" />
                               </td>
-                              <td class="text" style="vertical-align:middle; padding:0 0 4px 0; font-size:13px; line-height:17px; color:#111111; background:#ffffff;">
+                              <td style="vertical-align:middle; padding:0 0 4px 0; font-size:13px; line-height:17px; color:#111111; background:#ffffff;">
                                 <a id="sigEmailLink" href="mailto:alex.john@biatextiles.co" style="color:#111111; text-decoration:none;">
-                                  <span id="sigEmailText" style="font-size:13px; line-height:17px; word-spacing:1px; letter-spacing:0.2px;">alex.john@biatextiles.co</span>
+                                  <span id="sigEmailText" style="word-spacing:1px; letter-spacing:0.2px;">alex.john@biatextiles.co</span>
                                 </a>
                               </td>
                             </tr>
                           </table>
 
                           <!-- Website -->
-                          <table role="presentation" cellpadding="0" cellspacing="0" border="0"
-                                 style="width:100%; background:#ffffff;">
+                          <table role="presentation" cellpadding="0" cellspacing="0" border="0" style="width:100%; background:#ffffff;">
                             <tr>
                               <td style="width:26px; vertical-align:middle; padding:0; background:#ffffff;">
-                                <img src="website.png" width="18" height="18" alt="Website"
-                                     style="display:block; border:0; outline:none; background:#ffffff;" />
+                                <img src="website.png" width="18" height="18" alt="Website" style="display:block; border:0; outline:none; background:#ffffff;" />
                               </td>
-                              <td class="text" style="vertical-align:middle; padding:0 0 4px 0; font-size:13px; line-height:17px; color:#111111; background:#ffffff;">
-                                <span style="font-size:13px; line-height:17px; word-spacing:2px; letter-spacing:0.2px;">biatextiles.com</span>
+                              <td style="vertical-align:middle; padding:0 0 4px 0; font-size:13px; line-height:17px; color:#111111; background:#ffffff;">
+                                <span style="word-spacing:2px; letter-spacing:0.2px;">biatextiles.com</span>
                               </td>
                             </tr>
                           </table>
 
                           <!-- Location -->
-                          <table role="presentation" cellpadding="0" cellspacing="0" border="0"
-                                 style="width:100%; background:#ffffff;">
+                          <table role="presentation" cellpadding="0" cellspacing="0" border="0" style="width:100%; background:#ffffff;">
                             <tr>
                               <td style="width:26px; vertical-align:top; padding:0; background:#ffffff;">
-                                <img src="location.png" width="18" height="18" alt="Location"
-                                     style="display:block; border:0; outline:none; background:#ffffff;" />
+                                <img src="location.png" width="18" height="18" alt="Location" style="display:block; border:0; outline:none; background:#ffffff;" />
                               </td>
-                              <td class="text" style="vertical-align:top; padding:0; font-size:13px; line-height:17px; color:#111111; word-spacing:2px; letter-spacing:0.2px; background:#ffffff;">
-                                Land No 405, Plot 8 Zubaidi,<br />
-                                King Hussein Bin Talal Development Area,<br />
-                                Al‑Mafraq, Jordan
+                              <td style="vertical-align:top; padding:0; font-size:13px; line-height:17px; color:#111111; word-spacing:2px; letter-spacing:0.2px; background:#ffffff;">
+                                Land No 405, Plot 8 Zubaidi,
+                                King Hussein<br />
+                                Bin Talal Development Area,Al‑Mafraq,Jordan
                               </td>
                             </tr>
                           </table>
@@ -277,10 +222,6 @@
 
   <!-- ======= Scripts ======= -->
 <script type="text/javascript">
-  /* ====== CONFIG: set your absolute asset base URL here (no trailing slash).
-     If left empty, relative paths will be used. Absolute HTTPS is recommended for Outlook. ====== */
-  var BASE_URL = ""; // e.g., "https://cdn.biatextiles.com/signature"
-
   // --- Helpers ---
   function digitsOnly(str) {
     return (str || "").replace(/[^\d]/g, "");
@@ -301,21 +242,32 @@
     return "https://wa.me/" + d;
   }
 
-  // Make image sources absolute (safer for Outlook) if BASE_URL is set
-  function absolutizeImgSrc(root) {
-    if (!BASE_URL) return;
-    var imgs = root.querySelectorAll('img');
-    imgs.forEach(function(img){
-      var src = img.getAttribute('src') || '';
-      if (!src) return;
-      if (!/^https?:\/\//i.test(src)) {
-        src = src.replace(/^(\.\/)+/,'').replace(/^\/+/,'');
-        img.setAttribute('src', BASE_URL + "/" + src);
-      }
-    });
+  // Divider height sync for the IMAGE (desktop) before copy/paste.
+  // Phones hide the image divider (media query) and use border-left instead.
+  function setDividerHeight() {
+    var detailsCell = document.getElementById('detailsCell');
+    var dividerImg  = document.getElementById('dividerImg');
+    if (!detailsCell || !dividerImg) return;
+
+    // If the divider image is hidden by CSS on phones, skip
+    if (dividerImg.offsetParent === null) return;
+
+    var row = detailsCell.closest ? detailsCell.closest('tr') : detailsCell.parentNode;
+    var targetH = (row && row.offsetHeight) ? row.offsetHeight : detailsCell.offsetHeight;
+
+    var correction = 6; // trim micro gaps if anti-aliasing leaves a 1–2px tail
+    dividerImg.style.height = Math.max(1, targetH - correction) + 'px';
   }
 
-  // Generate (fill preview)
+  // Init
+  window.addEventListener('load', function () {
+    setDividerHeight();
+    var logo = document.querySelector('img[src*="logo2"]');
+    if (logo) logo.addEventListener('load', setDividerHeight);
+  });
+  window.addEventListener('resize', setDividerHeight);
+
+  // Generate
   function fillForm() {
     var name = document.getElementById("nameInput").value || "Your Name";
     var designation = document.getElementById("designationInput").value || "Designation";
@@ -356,10 +308,16 @@
     if (waTextEl) waTextEl.textContent = "WhatsApp: " + waDisplay;
     var waLinkEl = document.getElementById("sigWhatsAppLink");
     if (waLinkEl) waLinkEl.setAttribute("href", waHref);
+
+    // Recompute divider height after changes (desktop)
+    setDividerHeight();
   }
 
   // ===== Copy (Outlook-safe normalization) =====
   function copyToClipboard() {
+    // Ensure divider height is synced immediately before copying
+    setDividerHeight();
+
     var copyBoxElement = document.getElementById('signaturewrap');
 
     // Clone
@@ -369,7 +327,7 @@
     clone.style.border = "0";
     clone.setAttribute("border", "0");
 
-    // Normalize tables for email clients (especially Outlook)
+    // Normalize tables for email clients (Outlook)
     clone.querySelectorAll('table, tr, td').forEach(function(el){
       el.setAttribute('cellpadding','0');
       el.setAttribute('cellspacing','0');
@@ -380,40 +338,15 @@
       if (!el.style.margin) el.style.margin = '0';
       if (!el.style.padding) el.style.padding = '0';
       if (!el.style.backgroundColor) el.style.backgroundColor = '#ffffff';
-      if (!el.style.fontFamily) el.style.fontFamily = 'Arial, Helvetica, sans-serif';
     });
 
-    // Convert <div> to <span> WITHOUT copying CSS (prevents mobile CSS from affecting Outlook)
-    // BUT: keep the V-cut divider HTML intact (don't touch divs inside .divider-cell)
-    var divs = clone.querySelectorAll('div');
-    divs.forEach(function(div) {
-      if (div.closest && div.closest('.divider-cell')) return; // skip divider
+    // Convert <div> to <span> to prevent paragraph spacing in Outlook
+    clone.querySelectorAll('div').forEach(function(div) {
       var span = document.createElement("span");
+      span.style.cssText = div.style.cssText || '';
       span.style.margin = '0';
-      span.style.display = 'block';
-      span.style.fontFamily = 'Arial, Helvetica, sans-serif';
-      span.style.color = '#111111';
       span.innerHTML = div.innerHTML;
       if (div.parentNode) div.parentNode.replaceChild(span, div);
-    });
-
-    // Force default font sizes everywhere to stop Word scaling
-    clone.querySelectorAll('span, a, td').forEach(function(el){
-      var id = el.getAttribute('id') || '';
-      if (id === 'sigName') {
-        el.style.fontSize = '18px';
-        el.style.lineHeight = '20px';
-        el.style.fontWeight = '700';
-      } else if (id === 'sigDesignation') {
-        el.style.fontSize = '13px';
-        el.style.lineHeight = '17px';
-        el.style.fontWeight = '600';
-      } else {
-        if (!el.style.fontSize) el.style.fontSize = '13px';
-        if (!el.style.lineHeight) el.style.lineHeight = '17px';
-      }
-      if (!el.style.color) el.style.color = '#111111';
-      if (!el.style.fontFamily) el.style.fontFamily = 'Arial, Helvetica, sans-serif';
     });
 
     // Links
@@ -425,7 +358,7 @@
       if (!a.style.padding) a.style.padding = '0';
     });
 
-    // Images: ensure width/height attrs (locks sizes in Outlook)
+    // Images
     clone.querySelectorAll('img').forEach(function(img) {
       img.setAttribute('border', '0');
       img.style.display = 'block';
@@ -435,22 +368,7 @@
       if (!img.style.padding) img.style.padding = '0';
       img.style.verticalAlign = 'middle';
       if (!img.style.backgroundColor) img.style.backgroundColor = '#ffffff';
-
-      // lock width/height from attributes or computed style
-      var wAttr = img.getAttribute('width');
-      var hAttr = img.getAttribute('height');
-      if (!wAttr) {
-        var wStyle = (img.style.width || '').replace('px','').trim();
-        if (wStyle) img.setAttribute('width', wStyle);
-      }
-      if (!hAttr) {
-        var hStyle = (img.style.height || '').replace('px','').trim();
-        if (hStyle) img.setAttribute('height', hStyle);
-      }
     });
-
-    // Make image src absolute if BASE_URL is set
-    absolutizeImgSrc(clone);
 
     var html = clone.outerHTML;
 
