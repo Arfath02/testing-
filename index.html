@@ -2,414 +2,238 @@
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-  <title>BIA Textiles - Signature Generator (New Design)</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>BIA Textiles - Signature Generator</title>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
 
-  <!-- Mobile styles -->
-  <style type="text/css">
-    /* Basic hygiene */
-    img { border:0; outline:none; text-decoration:none; display:block; }
-    a   { text-decoration:none; color:#111111; }
-    table { border-collapse:separate; } /* safer in email clients */
+<style type="text/css">
+  img { border:0; outline:none; display:block; }
+  a { text-decoration:none; color:#111111; }
 
-    /* Mobile (phones ≤480px): stack columns and hide the image divider. 
-       Show a CSS border-left on the details column so the red line is always visible. */
-    @media only screen and (max-width:480px){
-      .sig-table  { width:100% !important; }
-      .stack      { display:block !important; width:100% !important; }
-      .logo-cell  { padding:8px 8px 0 8px !important; }
-      .divider-cell { display:none !important; }
-      .details-cell { 
-        padding:8px 10px 0 10px !important; 
-        border-left:4px solid #d40000 !important; 
-      }
-    }
-  </style>
+  body {
+    margin:0;
+    padding:24px;
+    font-family:Arial, Helvetica, sans-serif;
+    background:#ffffff;
+  }
+
+  .card {
+    width:100%;
+    border:1px solid #ededed;
+    border-radius:10px;
+    background:#f6f6f6;
+    padding:16px;
+  }
+
+  .field {
+    width:100%;
+    padding:10px;
+    border:0;
+    border-radius:6px;
+    background:#ffffff;
+    box-sizing:border-box;
+  }
+
+  .row { display:flex; gap:8px; align-items:center; }
+
+  .btn {
+    border-radius:12px;
+    height:36px;
+    padding:0 16px;
+   ;
+    cursor:pointer;
+  }
+
+  @media only screen and (max-width:600px){
+    .stack { display:block !important; width:100% !important; }
+    .divider-cell { display:none !important; }
+    .details-cell { border-left:4px solid #d40000 !important; padding-left:12px !important; }
+  }
+</style>
 </head>
 
-<body bgcolor="#ffffff" style="background:#ffffff; font-family:Arial, Helvetica, sans-serif; margin:0; padding:20px;">
+<body>
 
-  <!-- Page grid -->
-  <table role="presentation" cellpadding="0" cellspacing="0" border="0" style="width:100%;">
-    <tr>
+<!-- LEFT + RIGHT layout -->
+<table role="presentation" cellspacing="0" cellpadding="0" border="0"
+       style="width:100%; max-width:1200px; margin:auto;">
+  <tr>
 
-      <!-- Left: Form -->
-      <td class="stack" style="width:320px; vertical-align:top; padding-right:16px;">
-        <table role="presentation" cellpadding="0" cellspacing="0" border="0"
-               style="width:100%; border:1px solid #ededed; background:#f8f8f8; border-radius:8px;">
-          <tr>
-            <td style="padding:16px;">
-              <div style="font-weight:bold; margin-bottom:10px; font-size:15px;">Signature Details</div>
+    <!-- LEFT FORM -->
+    <td valign="top" style="width:35%; padding-right:25px;">
 
-              <form id="form" style="margin:0;">
-                <input id="nameInput" type="text" placeholder="Full Name"
-                  style="width:100%; padding:8px; margin:6px 0; border:0; border-radius:4px; box-sizing:border-box;" />
+      <table role="presentation" cellspacing="0" cellpadding="0" border="0" class="card">
+        <tr><td>
 
-                <input id="designationInput" type="text" placeholder="Designation"
-                  style="width:100%; padding:8px; margin:6px 0; border:0; border-radius:4px; box-sizing:border-box;" />
+          <div style="font-weight:bold; margin-bottom:10px; font-size:15px;">
+            Signature Details
+          </div>
 
-                <!-- Phone (+962 fixed) -->
-                <div style="display:flex; gap:6px; align-items:center; margin:6px 0;">
-                  <span style="display:inline-block; padding:8px 10px; background:#fff; border-radius:4px; border:1px solid #e1e1e1; font-size:13px;">+962</span>
-                  <input id="phoneRestInput" type="text" placeholder="776655443"
-                    style="flex:1; padding:8px; border:0; border-radius:4px; box-sizing:border-box;" />
-                </div>
+          <div style="margin-bottom:8px;">
+            <input id="nameInput" class="field" type="text" placeholder="Full Name" />
+          </div>
 
-                <!-- WhatsApp controls -->
-                <div style="display:flex; align-items:center; gap:8px; margin-top:6px; font-size:13px;">
-                  <input id="waSameCheckbox" type="checkbox" checked />
-                  <label for="waSameCheckbox">WhatsApp is same as Phone</label>
-                </div>
-                <!-- If different, enter FULL WhatsApp number with country code -->
-                <input id="whatsappFullInput" type="text" placeholder="WhatsApp (enter FULL number incl. country code if different)"
-                  style="width:100%; padding:8px; margin:6px 0; border:0; border-radius:4px; box-sizing:border-box;" />
+          <div style="margin-bottom:8px;">
+            <input id="designationInput" class="field" type="text" placeholder="Designation" />
+          </div>
 
-                <input id="emailInput" type="text" placeholder="Email ID"
-                  style="width:100%; padding:8px; margin:6px 0; border:0; border-radius:4px; box-sizing:border-box;" />
+          <div class="row" style="margin-bottom:8px;">
+            <span style="padding:10px 12px; border:1px solid #e1e1e1; background:#fff; border-radius:6px;">+962</span>
+            <input id="phoneRestInput" class="field" type="text" placeholder="776655443" style="flex:1;" />
+          </div>
 
-                <div style="height:8px;"></div>
+          <div class="row" style="margin-bottom:8px; font-size:13px;">
+            <input id="waSameCheckbox" type="checkbox" checked />
+            <label for="waSameCheckbox">WhatsApp is same as Phone</label>
+          </div>
 
-                <button type="button" onclick="fillForm()"
-                  style="border-radius:12px; width:120px; height:36px; border:1px solid #c6c6c6; background:#ffffff; cursor:pointer;">
-                  Generate
-                </button>
+          <div style="margin-bottom:8px;">
+            <input id="whatsappFullInput" class="field" type="text" placeholder="WhatsApp (enter FULL number incl. country code)" />
+          </div>
 
-                <button id="copyButton" type="button" onclick="copyToClipboard()"
-                  style="border-radius:12px; width:120px; height:36px; border:1px solid #c6c6c6; background:#ffffff; cursor:pointer; margin-left:8px;">
-                  Copy
-                </button>
+          <div style="margin-bottom:12px;">
+            <input id="emailInput" class="field" type="text" placeholder="Email ID" />
+          </div>
 
-              </form>
-            </td>
-          </tr>
-        </table>
-      </td>
+          <button type="button" class="btn" onclick="fillForm()">Generate</button>
+          <button type="button" class="btn" onclick="copyToClipboard()">Copy</button>
 
-      <!-- Right: Signature Preview -->
-      <td class="stack" style="vertical-align:top;">
+        </td></tr>
+      </table>
 
-        <!-- Signature (set to hug content) -->
-        <table id="signaturewrap" class="sig-table" role="presentation" cellpadding="0" cellspacing="0" border="0"
-          style="width:auto; display:inline-table; background:#ffffff; 
-                 /* To remove ALL boxes, delete the next two properties: */
-                 border:1px solid #d9d9d9; border-radius:10px; 
-                 overflow:hidden;">
-          <tr>
-            
-            <!-- Logo (tight padding; align top) -->
-            <td class="logo-cell" style="width: 120px; padding:4px 4px 0 8px; vertical-align:center; text-align:center; background:#ffffff;">
-              <img src="logo2.png" style="width:100%; max-width:250px; display:block; margin:0 auto; background:#ffffff;" alt="BIA Textiles" />
-            </td>
+    </td>
 
-            <!-- Divider (IMAGE on desktop; hidden on phones by media query) -->
-            <td class="divider-cell" id="redLineCell"
-                style="width:8px; padding:0; margin:0; vertical-align:top; background:#ffffff; line-height:0; font-size:0;">
-              <!-- Use an absolute URL in production (example below). 
-                   src="https://raw.githubusercontent.com/Arfath02/Updated-signature/main/new%20red%20line.png" -->
-              <img id="dividerImg"
-                   src="new red line.png"
-                   width="20"
-                   style="display:block; border:0; outline:none; margin:0; height: auto; background:#ffffff;" 
-                   alt="" />
-            </td>
 
-            <!-- Details column (white bg; media query adds border-left on phones) -->
-            <td id="detailsCell" class="details-cell" style="vertical-align:top; padding:0; background:#ffffff;">
-              <table role="presentation" cellpadding="0" cellspacing="0" border="0" style="border-collapse:separate; background:#ffffff;">
-                <tr>
-                  <td style="padding:4px 10px 0 10px; vertical-align:top; background:#ffffff;">
+    <!-- RIGHT SIGNATURE PREVIEW -->
+    <td valign="top" style="width:65%; padding-left:25px;">
 
-                    <!-- Name -->
-                    <div style="font-size:18px; line-height:20px; font-weight:700; color:#000000; margin:0; display:block; background:#ffffff;">
-                      <span id="sigName">Alex John</span>
-                    </div>
+      <table id="signaturewrap" class="sig-table" role="presentation"
+             width="520" cellpadding="0" cellspacing="0" border="0"
+             style="background:#ffffff;">
 
-                    <!-- Designation -->
-                    <div style="font-size:13px; line-height:17px; color:#333333; font-weight:600; margin:2px 0 0 0; display:block; background:#ffffff;">
-                      <span id="sigDesignation">Designation</span>
-                    </div>
+        <tr>
 
-                    <!-- Contact list -->
-                    <table role="presentation" cellpadding="0" cellspacing="0" border="0" style="width:100%; border-collapse:collapse; margin-top:6px; background:#ffffff;">
-                      <tr>
-                        <td style="vertical-align:top; padding:0; background:#ffffff;">
+          <!-- LOGO — gap reduced -->
+          <td valign="center" width="140" style="padding:0 6px 0 0;">
+            <img src="logo2.png" width="130" alt="BIA" />
+          </td>
 
-                          <!-- Phone -->
-                          <table role="presentation" cellpadding="0" cellspacing="0" border="0" style="width:100%; padding:0; background:#ffffff;">
-                            <tr>
-                              <td style="width:26px; vertical-align:middle; padding:0; background:#ffffff;">
-                                <img src="call.png" width="18" height="18" alt="Phone" style="display:block; border:0; outline:none; background:#ffffff;" />
-                              </td>
-                              <td style="vertical-align:middle; padding:0 0 4px 0; font-size:13px; line-height:17px; color:#111111; background:#ffffff;">
-                                <a id="sigPhoneLink" href="tel:+962776655443" style="color:#111111; text-decoration:none;">
-                                  <span id="sigPhone" style="word-spacing:2px; letter-spacing:0.2px;">+962 776655443</span>
-                                </a>
-                              </td>
-                            </tr>
-                          </table>
+          <!-- RED LINE — gap reduced -->
+          <td valign="top" width="18" class="divider-cell"
+              style="padding:0 8px 0 0;">
+            <img id="dividerImg" src="new red line.png" width="18" height="200px" alt="" />
+          </td>
 
-                          <!-- WhatsApp -->
-                          <table role="presentation" cellpadding="0" cellspacing="0" border="0" style="width:100%; padding:0; background:#ffffff;">
-                            <tr>
-                              <td style="width:26px; vertical-align:middle; padding:0; background:#ffffff;">
-                                <img src="https://github.com/Arfath02/testing-/blob/main/whatsapp.png?raw=true" 
-                                     width="18" height="18" alt="WhatsApp" style="display:block; margin:0; border:0; background:#ffffff;" />
-                              </td>
-                              <td style="vertical-align:middle; padding:0 0 4px 0; font-size:13px; line-height:17px; color:#111111; background:#ffffff;">
-                                <a id="sigWhatsAppLink" href="https://wa.me/962776655443" style="color:#111111; text-decoration:none;">
-                                  <span id="sigWhatsAppText" style="word-spacing:2px; letter-spacing:0.2px;">WhatsApp: +962 776655443</span>
-                                </a>
-                              </td>
-                            </tr>
-                          </table>
+          <!-- DETAILS -->
+          <td valign="top" id="detailsCell" class="details-cell" style="padding:0;">
 
-                          <!-- Email -->
-                          <table role="presentation" cellpadding="0" cellspacing="0" border="0" style="width:100%; background:#ffffff;">
-                            <tr>
-                              <td style="width:26px; vertical-align:middle; padding:0; background:#ffffff;">
-                                <img src="Mail.png" width="18" height="18" alt="Email" style="display:block; border:0; outline:none; background:#ffffff;" />
-                              </td>
-                              <td style="vertical-align:middle; padding:0 0 4px 0; font-size:13px; line-height:17px; color:#111111; background:#ffffff;">
-                                <a id="sigEmailLink" href="mailto:alex.john@biatextiles.co" style="color:#111111; text-decoration:none;">
-                                  <span id="sigEmailText" style="word-spacing:1px; letter-spacing:0.2px;">alex.john@biatextiles.co</span>
-                                </a>
-                              </td>
-                            </tr>
-                          </table>
+            <div style="font-size:18px; font-weight:900; margin:0;">
+              <span id="sigName">Your Name</span>
+            </div>
 
-                          <!-- Website -->
-                          <table role="presentation" cellpadding="0" cellspacing="0" border="0" style="width:100%; background:#ffffff;">
-                            <tr>
-                              <td style="width:26px; vertical-align:middle; padding:0; background:#ffffff;">
-                                <img src="website.png" width="18" height="18" alt="Website" style="display:block; border:0; outline:none; background:#ffffff;" />
-                              </td>
-                              <td style="vertical-align:middle; padding:0 0 4px 0; font-size:13px; line-height:17px; color:#111111; background:#ffffff;">
-                                <span style="word-spacing:2px; letter-spacing:0.2px;">biatextiles.com</span>
-                              </td>
-                            </tr>
-                          </table>
+            <div style="font-size:13px; font-weight:600; margin-top:2px;">
+              <span id="sigDesignation">Designation</span>
+            </div>
 
-                          <!-- Location -->
-                          <table role="presentation" cellpadding="0" cellspacing="0" border="0" style="width:100%; background:#ffffff;">
-                            <tr>
-                              <td style="width:26px; vertical-align:top; padding:0; background:#ffffff;">
-                                <img src="location.png" width="18" height="18" alt="Location" style="display:block; border:0; outline:none; background:#ffffff;" />
-                              </td>
-                              <td style="vertical-align:top; padding:0; font-size:13px; line-height:17px; color:#111111; word-spacing:2px; letter-spacing:0.2px; background:#ffffff;">
-                                Land No 405, Plot 8 Zubaidi,
-                                King Hussein<br />
-                                Bin Talal Development Area,Al‑Mafraq,Jordan
-                              </td>
-                            </tr>
-                          </table>
+            <table role="presentation" cellpadding="0" cellspacing="0" border="0" style="margin-top:8px;">
 
-                        </td>
-                      </tr>
-                    </table>
+              <tr>
+                <td width="22"><img src="call.png" width="18" /></td>
+                <td><a id="sigPhoneLink"><span id="sigPhone">+962 776655443</span></a></td>
+              </tr>
 
-                  </td>
-                </tr>
-              </table>
-            </td>
+              <tr>
+                <td width="22"><img src="whatsapp.png" width="18" /></td>
+                <td><a id="sigWhatsAppLink"><span id="sigWhatsAppText">WhatsApp: +962 776655443</span></a></td>
+              </tr>
 
-          </tr>
-        </table>
+              <tr>
+                <td width="22"><img src="Mail.png" width="18" /></td>
+                <td><a id="sigEmailLink"><span id="sigEmailText">email@domain.com</span></a></td>
+              </tr>
 
-      </td>
-    </tr>
-  </table>
+              <tr>
+                <td width="22"><img src="website.png" width="18" /></td>
+                <td>biatextiles.com</td>
+              </tr>
 
-  <!-- ======= Scripts ======= -->
-<script type="text/javascript">
-  // --- Helpers ---
-  function digitsOnly(str) {
-    return (str || "").replace(/[^\d]/g, "");
+              <tr>
+                <td width="22"><img src="location.png" width="18" /></td>
+                <td>
+                  Land No 405, Plot 8 Zubaidi, King Hussein<br />
+                  Bin Talal Development Area,Al‑Mafraq,Jordan
+                </td>
+              </tr>
+
+            </table>
+
+          </td>
+        </tr>
+      </table>
+
+    </td>
+
+  </tr>
+</table>
+
+
+<script>
+function digitsOnly(str){ return (str||"").replace(/[^\d]/g,""); }
+
+function formatDisplayPhone(rest){
+  rest = (rest||"").trim().replace(/^\+?\s*962\s*/,"");
+  return "+962 " + rest;
+}
+
+function telHrefFromRest(rest){
+  let d = digitsOnly(rest);
+  if(d.startsWith("962")) d = d.substring(3);
+  return "tel:+962" + d;
+}
+
+function waHrefFromFull(full){
+  return "https://wa.me/" + digitsOnly(full);
+}
+
+function fillForm(){
+  const name = document.getElementById("nameInput").value || "Your Name";
+  const des  = document.getElementById("designationInput").value || "Designation";
+  const rest = document.getElementById("phoneRestInput").value || "776655443";
+  const email= document.getElementById("emailInput").value || "email@domain.com";
+
+  document.getElementById("sigName").textContent = name;
+  document.getElementById("sigDesignation").textContent = des;
+
+  const phoneDisplay = formatDisplayPhone(rest);
+  document.getElementById("sigPhone").textContent = phoneDisplay;
+  document.getElementById("sigPhoneLink").href = telHrefFromRest(rest);
+
+  document.getElementById("sigEmailText").textContent = email;
+  document.getElementById("sigEmailLink").href = "mailto:" + email;
+
+  const waSame = document.getElementById("waSameCheckbox").checked;
+  const waInput= document.getElementById("whatsappFullInput").value.trim();
+
+  const waDisplay = waSame ? phoneDisplay : waInput;
+  const waHref    = waSame ? ("https://wa.me/" + digitsOnly(phoneDisplay))
+                           : waHrefFromFull(waInput);
+
+  document.getElementById("sigWhatsAppText").textContent = "WhatsApp: " + waDisplay;
+  document.getElementById("sigWhatsAppLink").href = waHref;
+}
+
+function copyToClipboard(){
+  const node = document.getElementById("signaturewrap");
+  const html = node.outerHTML;
+
+  if (navigator.clipboard && window.ClipboardItem){
+    const blobHtml = new Blob([html], {type:"text/html"});
+    navigator.clipboard.write([new ClipboardItem({ "text/html": blobHtml })])
+      .then(()=> alert("Signature copied!"))
+      .catch(()=> alert("Copy failed."));
   }
-  function formatDisplayPhone(rest) {
-    var cleaned = (rest || "").trim()
-      .replace(/^\+?\s*962\s*/,"")
-      .replace(/\s+/g, " ");
-    return "+962 " + cleaned;
-  }
-  function telHrefFromRest(rest) {
-    var d = digitsOnly(rest);
-    if (d.startsWith("962")) d = d.substring(3);
-    return "tel:+962" + d;
-  }
-  function waHrefFromFull(fullNumber) {
-    var d = digitsOnly(fullNumber);
-    return "https://wa.me/" + d;
-  }
-
-  // Divider height sync for the IMAGE (desktop) before copy/paste.
-  // Phones hide the image divider (media query) and use border-left instead.
-  function setDividerHeight() {
-    var detailsCell = document.getElementById('detailsCell');
-    var dividerImg  = document.getElementById('dividerImg');
-    if (!detailsCell || !dividerImg) return;
-
-    // If the divider image is hidden by CSS on phones, skip
-    if (dividerImg.offsetParent === null) return;
-
-    var row = detailsCell.closest ? detailsCell.closest('tr') : detailsCell.parentNode;
-    var targetH = (row && row.offsetHeight) ? row.offsetHeight : detailsCell.offsetHeight;
-
-    var correction = 6; // trim micro gaps if anti-aliasing leaves a 1–2px tail
-    dividerImg.style.height = Math.max(1, targetH - correction) + 'px';
-  }
-
-  // Init
-  window.addEventListener('load', function () {
-    setDividerHeight();
-    var logo = document.querySelector('img[src*="logo2"]');
-    if (logo) logo.addEventListener('load', setDividerHeight);
-  });
-  window.addEventListener('resize', setDividerHeight);
-
-  // Generate
-  function fillForm() {
-    var name = document.getElementById("nameInput").value || "Your Name";
-    var designation = document.getElementById("designationInput").value || "Designation";
-
-    var phoneRest = document.getElementById("phoneRestInput").value || "776655443";
-    var email = document.getElementById("emailInput").value || "name@biatextiles.jo";
-
-    var waSame = document.getElementById("waSameCheckbox").checked;
-    var waFullInput = document.getElementById("whatsappFullInput").value;
-
-    // Update Name & Designation
-    document.getElementById("sigName").textContent = name;
-    document.getElementById("sigDesignation").textContent = designation;
-
-    // Phone
-    var phoneDisplay = formatDisplayPhone(phoneRest);
-    document.getElementById("sigPhone").textContent = phoneDisplay;
-    var phoneLinkEl = document.getElementById("sigPhoneLink");
-    if (phoneLinkEl) phoneLinkEl.setAttribute("href", telHrefFromRest(phoneRest));
-
-    // Email
-    var emailSpan = document.getElementById("sigEmailText");
-    if (emailSpan) emailSpan.textContent = email;
-    var emailLinkEl = document.getElementById("sigEmailLink");
-    if (emailLinkEl) emailLinkEl.setAttribute("href", "mailto:" + email);
-
-    // WhatsApp
-    var waDisplay, waHref;
-    if (waSame) {
-      waDisplay = phoneDisplay;
-      waHref = "https://wa.me/" + digitsOnly(phoneDisplay);
-    } else {
-      var fullEntered = (waFullInput && waFullInput.trim().length) ? waFullInput.trim() : phoneDisplay;
-      waDisplay = fullEntered;
-      waHref = waHrefFromFull(fullEntered);
-    }
-    var waTextEl = document.getElementById("sigWhatsAppText");
-    if (waTextEl) waTextEl.textContent = "WhatsApp: " + waDisplay;
-    var waLinkEl = document.getElementById("sigWhatsAppLink");
-    if (waLinkEl) waLinkEl.setAttribute("href", waHref);
-
-    // Recompute divider height after changes (desktop)
-    setDividerHeight();
-  }
-
-  // ===== Copy (Outlook-safe normalization) =====
-  function copyToClipboard() {
-    // Ensure divider height is synced immediately before copying
-    setDividerHeight();
-
-    var copyBoxElement = document.getElementById('signaturewrap');
-
-    // Clone
-    var clone = copyBoxElement.cloneNode(true);
-
-    // Remove only the preview border from the outer wrapper
-    clone.style.border = "0";
-    clone.setAttribute("border", "0");
-
-    // Normalize tables for email clients (Outlook)
-    clone.querySelectorAll('table, tr, td').forEach(function(el){
-      el.setAttribute('cellpadding','0');
-      el.setAttribute('cellspacing','0');
-      el.setAttribute('border','0');
-      el.style.borderCollapse = 'separate';
-      el.style.msoTableLspace = '0pt';
-      el.style.msoTableRspace = '0pt';
-      if (!el.style.margin) el.style.margin = '0';
-      if (!el.style.padding) el.style.padding = '0';
-      if (!el.style.backgroundColor) el.style.backgroundColor = '#ffffff';
-    });
-
-    // Convert <div> to <span> to prevent paragraph spacing in Outlook
-    clone.querySelectorAll('div').forEach(function(div) {
-      var span = document.createElement("span");
-      span.style.cssText = div.style.cssText || '';
-      span.style.margin = '0';
-      span.innerHTML = div.innerHTML;
-      if (div.parentNode) div.parentNode.replaceChild(span, div);
-    });
-
-    // Links
-    clone.querySelectorAll('a').forEach(function(a) {
-      a.style.color = '#111111';
-      a.style.textDecoration = 'none';
-      a.style.msoPaddingAlt = '0';
-      a.style.margin = '0';
-      if (!a.style.padding) a.style.padding = '0';
-    });
-
-    // Images
-    clone.querySelectorAll('img').forEach(function(img) {
-      img.setAttribute('border', '0');
-      img.style.display = 'block';
-      img.style.outline = 'none';
-      img.style.textDecoration = 'none';
-      img.style.margin = '0';
-      if (!img.style.padding) img.style.padding = '0';
-      img.style.verticalAlign = 'middle';
-      if (!img.style.backgroundColor) img.style.backgroundColor = '#ffffff';
-    });
-
-    var html = clone.outerHTML;
-
-    if (navigator.clipboard && window.ClipboardItem) {
-      const blobHtml = new Blob([html], { type: "text/html" });
-      const blobText = new Blob([clone.textContent || ""], { type: "text/plain" });
-      navigator.clipboard.write([new ClipboardItem({ "text/html": blobHtml, "text/plain": blobText })])
-        .then(function () { alert("Signature copied. Paste into your email signature settings."); })
-        .catch(function () { legacyCopyHtml(html); });
-    } else {
-      legacyCopyHtml(html);
-    }
-  }
-
-  // Legacy copy path
-  function legacyCopyHtml(html) {
-    var tempDiv = document.createElement('div');
-    tempDiv.contentEditable = "true";
-    tempDiv.style.position = 'fixed';
-    tempDiv.style.left = '-9999px';
-    tempDiv.innerHTML = html;
-    document.body.appendChild(tempDiv);
-
-    var range = document.createRange();
-    range.selectNodeContents(tempDiv);
-    var selection = window.getSelection();
-    selection.removeAllRanges();
-    selection.addRange(range);
-
-    try {
-      document.execCommand("copy");
-      alert("Signature copied. Paste into your email signature settings.");
-    } catch (err) {
-      alert("Copy failed. Please select the signature manually and copy.");
-    } finally {
-      selection.removeAllRanges();
-      document.body.removeChild(tempDiv);
-    }
-  }
+}
 </script>
 
 </body>
 </html>
-
