@@ -218,7 +218,7 @@ function fillForm(){
   const waHref    = waSame ? ("https://wa.me/" + digitsOnly(phoneDisplay))
                            : waHrefFromFull(waInput);
 
-  document.getElementById("sigWhatsAppText").textContent = "WhatsApp: " + waDisplay;
+  document.getElementById("sigWhatsAppText").textContent = waDisplay;
   document.getElementById("sigWhatsAppLink").href = waHref;
 }
 
@@ -237,4 +237,5 @@ function copyToClipboard(){
 
 </body>
 </html>
+
 
