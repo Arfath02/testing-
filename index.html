@@ -9,10 +9,11 @@
 <style type="text/css">
   img { border:0; outline:none; display:block; }
   a { text-decoration:none; color:#111111; }
+  table { border-collapse:separate; }
 
   body {
     margin:0;
-    padding:24px;
+    padding:16px;
     font-family:Arial, Helvetica, sans-serif;
     background:#ffffff;
   }
@@ -22,32 +23,35 @@
     border:1px solid #ededed;
     border-radius:10px;
     background:#f6f6f6;
-    padding:16px;
+    padding:12px;
   }
 
   .field {
     width:100%;
-    padding:10px;
+    padding:8px;
     border:0;
     border-radius:6px;
     background:#ffffff;
     box-sizing:border-box;
+    font-size:13px;
   }
 
-  .row { display:flex; gap:8px; align-items:center; }
+  .row { display:flex; gap:6px; align-items:center; }
 
   .btn {
-    border-radius:12px;
-    height:36px;
-    padding:0 16px;
-   ;
+    border-radius:10px;
+    height:32px;
+    padding:0 12px;
+    border:1px solid #c6c6c6;
+    background:#ffffff;
     cursor:pointer;
+    font-size:13px;
   }
 
   @media only screen and (max-width:600px){
     .stack { display:block !important; width:100% !important; }
     .divider-cell { display:none !important; }
-    .details-cell { border-left:4px solid #d40000 !important; padding-left:12px !important; }
+    .details-cell { border-left:3px solid #d40000 !important; padding-left:10px !important; }
   }
 </style>
 </head>
@@ -60,38 +64,37 @@
   <tr>
 
     <!-- LEFT FORM -->
-    <td valign="top" style="width:35%; padding-right:25px;">
-
+    <td valign="top" style="width:34%; padding-right:20px;">
       <table role="presentation" cellspacing="0" cellpadding="0" border="0" class="card">
         <tr><td>
 
-          <div style="font-weight:bold; margin-bottom:10px; font-size:15px;">
+          <div style="font-weight:bold; margin-bottom:6px; font-size:14px;">
             Signature Details
           </div>
 
-          <div style="margin-bottom:8px;">
+          <div style="margin-bottom:6px;">
             <input id="nameInput" class="field" type="text" placeholder="Full Name" />
           </div>
 
-          <div style="margin-bottom:8px;">
+          <div style="margin-bottom:6px;">
             <input id="designationInput" class="field" type="text" placeholder="Designation" />
           </div>
 
-          <div class="row" style="margin-bottom:8px;">
-            <span style="padding:10px 12px; border:1px solid #e1e1e1; background:#fff; border-radius:6px;">+962</span>
+          <div class="row" style="margin-bottom:6px;">
+            <span style="padding:8px 10px; border:1px solid #e1e1e1; background:#fff; border-radius:6px; font-size:12px;">+962</span>
             <input id="phoneRestInput" class="field" type="text" placeholder="776655443" style="flex:1;" />
           </div>
 
-          <div class="row" style="margin-bottom:8px; font-size:13px;">
+          <div class="row" style="margin-bottom:6px; font-size:12px;">
             <input id="waSameCheckbox" type="checkbox" checked />
-            <label for="waSameCheckbox">WhatsApp is same as Phone</label>
+            <label for="waSameCheckbox">WhatsApp same as Phone</label>
+          </div>
+
+          <div style="margin-bottom:6px;">
+            <input id="whatsappFullInput" class="field" type="text" placeholder="WhatsApp (Full Number)" />
           </div>
 
           <div style="margin-bottom:8px;">
-            <input id="whatsappFullInput" class="field" type="text" placeholder="WhatsApp (enter FULL number incl. country code)" />
-          </div>
-
-          <div style="margin-bottom:12px;">
             <input id="emailInput" class="field" type="text" placeholder="Email ID" />
           </div>
 
@@ -100,128 +103,145 @@
 
         </td></tr>
       </table>
-
     </td>
 
-
     <!-- RIGHT SIGNATURE PREVIEW -->
-    <td valign="top" style="width:65%; padding-left:25px;">
-
+    <td valign="top" style="width:66%; padding-left:20px;">
       <table id="signaturewrap" class="sig-table" role="presentation"
-             width="520" cellpadding="0" cellspacing="0" border="0"
+             width="480" cellpadding="0" cellspacing="0" border="0"
              style="background:#ffffff;">
 
         <tr>
 
-          <!-- LOGO — gap reduced -->
-          <td valign="center" width="140" style="padding:0 6px 0 0;">
-            <img src="logo2.png" width="130" alt="BIA" />
+          <!-- LOGO -->
+          <td valign="middle" width="120" style="padding:0 4px 0 0;">
+            <img src="logo2.png" width="120" />
           </td>
 
-          <!-- RED LINE — gap reduced -->
-          <td valign="top" width="18" class="divider-cell"
-              style="padding:0 8px 0 0;">
-            <img id="dividerImg" src="new red line.png" width="18" height="200px" alt="" />
+          <!-- RED LINE -->
+          <td valign="top" width="14" class="divider-cell" style="padding:0 6px 0 0;">
+            <img src="new red line.png" width="14" />
           </td>
 
           <!-- DETAILS -->
           <td valign="top" id="detailsCell" class="details-cell" style="padding:0;">
 
-            <div style="font-size:18px; font-weight:900; margin:0;">
+            <!-- NAME -->
+            <div style="font-size:16px; font-weight:900; margin:0;">
               <span id="sigName">Your Name</span>
             </div>
 
-            <div style="font-size:13px; font-weight:600; margin-top:2px;">
+            <!-- DESIGNATION -->
+            <div style="font-size:13px; font-weight:600; margin:2px 0 6px 0;">
               <span id="sigDesignation">Designation</span>
             </div>
 
-            <table role="presentation" cellpadding="0" cellspacing="0" border="0" style="margin-top:8px;">
+            <!-- CONTACT SECTION -->
+            <table role="presentation" cellpadding="0" cellspacing="0" border="0">
 
               <tr>
-                <td width="22"><img src="call.png" width="18" /></td>
-                <td><a id="sigPhoneLink"><span id="sigPhone">+962 776655443</span></a></td>
+                <td width="20" style="padding:0 3px 2px 0;"><img src="call.png" width="16"></td>
+                <td style="font-size:13px; line-height:15px;">
+                  <span id="sigPhone">+962 776655443</span>
+                </td>
               </tr>
 
               <tr>
-                <td width="22"><img src="whatsapp.png" width="18" /></td>
-                <td><a id="sigWhatsAppLink"><span id="sigWhatsAppText">+962 776655443</span></a></td>
+                <td width="20" style="padding:0 3px 2px 0;"><img src="whatsapp.png" width="16"></td>
+                <td style="font-size:13px; line-height:15px;">
+                  <span id="sigWhatsAppText">+962 776655443</span>
+                </td>
               </tr>
 
               <tr>
-                <td width="22"><img src="Mail.png" width="18" /></td>
-                <td><a id="sigEmailLink"><span id="sigEmailText">email@domain.com</span></a></td>
+                <td width="20" style="padding:0 3px 2px 0;"><img src="Mail.png" width="16"></td>
+                <td style="font-size:13px; line-height:15px;">
+                  <!-- EMAIL AS CLICKABLE LINK -->
+                  <a id="sigEmailText"
+                     href="mailto:email@domain.com"
+                     style="color:#111111; text-decoration:none;">
+                    email@domain.com
+                  </a>
+                </td>
               </tr>
 
               <tr>
-                <td width="22"><img src="website.png" width="18" /></td>
-                <td>biatextiles.com</td>
+                <td width="20" style="padding:0 3px 2px 0;"><img src="website.png" width="16"></td>
+                <td style="font-size:13px; line-height:15px;">
+                  biatextiles.com
+                </td>
               </tr>
 
               <tr>
-                <td width="22"><img src="location.png" width="18" /></td>
-                <td>
+                <td width="20" style="padding:0 3px 0 0;"><img src="location.png" width="16"></td>
+                <td style="font-size:13px; line-height:15px;">
                   Land No 405, Plot 8 Zubaidi, King Hussein<br />
-                  Bin Talal Development Area,Al‑Mafraq,Jordan
+                  Bin Talal Development Area, Al‑Mafraq, Jordan
                 </td>
               </tr>
 
             </table>
 
           </td>
+
         </tr>
       </table>
-
     </td>
 
   </tr>
 </table>
 
-
 <script>
+// Digit cleaner
 function digitsOnly(str){ return (str||"").replace(/[^\d]/g,""); }
 
+// Format phone
 function formatDisplayPhone(rest){
   rest = (rest||"").trim().replace(/^\+?\s*962\s*/,"");
   return "+962 " + rest;
 }
 
-function telHrefFromRest(rest){
-  let d = digitsOnly(rest);
-  if(d.startsWith("962")) d = d.substring(3);
-  return "tel:+962" + d;
-}
+// Sync WhatsApp field with Phone
+document.getElementById("waSameCheckbox").addEventListener("change", function() {
+    const rest = document.getElementById("phoneRestInput").value.trim();
+    const waInput = document.getElementById("whatsappFullInput");
 
-function waHrefFromFull(full){
-  return "https://wa.me/" + digitsOnly(full);
-}
+    if (this.checked) {
+        waInput.value = "+962 " + rest;
+    } else {
+        waInput.value = "";
+    }
+});
 
 function fillForm(){
   const name = document.getElementById("nameInput").value || "Your Name";
   const des  = document.getElementById("designationInput").value || "Designation";
-  const rest = document.getElementById("phoneRestInput").value || "776655443";
-  const email= document.getElementById("emailInput").value || "email@domain.com";
-
-  document.getElementById("sigName").textContent = name;
-  document.getElementById("sigDesignation").textContent = des;
+  const rest = document.getElementById("phoneRestInput").value || "";
+  const email= (document.getElementById("emailInput").value || "email@domain.com").trim();
 
   const phoneDisplay = formatDisplayPhone(rest);
+
+  document.getElementById("sigName").textContent  = name;
+  document.getElementById("sigDesignation").textContent = des;
   document.getElementById("sigPhone").textContent = phoneDisplay;
-  document.getElementById("sigPhoneLink").href = telHrefFromRest(rest);
 
-  document.getElementById("sigEmailText").textContent = email;
-  document.getElementById("sigEmailLink").href = "mailto:" + email;
+  // WhatsApp Handling
+  const waSame  = document.getElementById("waSameCheckbox").checked;
+  let waInput   = document.getElementById("whatsappFullInput").value.trim();
 
-  const waSame = document.getElementById("waSameCheckbox").checked;
-  const waInput= document.getElementById("whatsappFullInput").value.trim();
+  if(waSame){
+    waInput = phoneDisplay;
+    document.getElementById("whatsappFullInput").value = phoneDisplay;
+  }
+  document.getElementById("sigWhatsAppText").textContent = waInput;
 
-  const waDisplay = waSame ? phoneDisplay : waInput;
-  const waHref    = waSame ? ("https://wa.me/" + digitsOnly(phoneDisplay))
-                           : waHrefFromFull(waInput);
-
-  document.getElementById("sigWhatsAppText").textContent = waDisplay;
-  document.getElementById("sigWhatsAppLink").href = waHref;
+  // Email (as clickable link)
+  const emailLink = document.getElementById("sigEmailText");
+  emailLink.textContent = email;
+  emailLink.href = "mailto:" + email;
 }
 
+// Copy HTML
 function copyToClipboard(){
   const node = document.getElementById("signaturewrap");
   const html = node.outerHTML;
@@ -229,13 +249,21 @@ function copyToClipboard(){
   if (navigator.clipboard && window.ClipboardItem){
     const blobHtml = new Blob([html], {type:"text/html"});
     navigator.clipboard.write([new ClipboardItem({ "text/html": blobHtml })])
-      .then(()=> alert("Signature copied!"))
+      .then(()=> alert("Signature Copied!"))
       .catch(()=> alert("Copy failed."));
+  } else {
+  
+    // Fallback: create a temporary textarea with the HTML
+    const ta = document.createElement("textarea");
+    ta.value = html;
+    document.body.appendChild(ta);
+    ta.select();
+    try { document.execCommand("copy"); alert("Signature Copied!"); }
+    catch(e){ alert("Copy failed."); }
+    document.body.removeChild(ta);
   }
 }
 </script>
 
 </body>
 </html>
-
-
